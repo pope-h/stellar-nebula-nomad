@@ -1,0 +1,27 @@
+[package]
+name = "stellar-nebula-nomad"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Decentralized space exploration sim on Stellar with procedural nebula generation and NFT ships"
+repository = "https://github.com/yourusername/stellar-nebula-nomad"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+soroban-sdk = { version = "0.20", features = ["derive"] }
+soroban-contract = "0.20"
+
+[dev-dependencies]
+soroban-sdk = { version = "0.20", features = ["derive"] }
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+
+[[bin]]
+name = "stellar_nebula_nomad"
+path = "src/lib.rs"
+crate-type = ["cdylib"]
